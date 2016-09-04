@@ -25,7 +25,8 @@
     <link href="{% static 'bootstrap-assets/css/bootstrap.min.css' %}">
 
     <!-- Style -->
-    <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
+{#    <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />#}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
     <link href="{% static 'plugins/owl-carousel/owl.carousel.css' %}" rel="stylesheet">
     <link href="{% static 'plugins/owl-carousel/owl.theme.css' %}" rel="stylesheet">
     <link href="{% static 'plugins/owl-carousel/owl.transitions.css' %}" rel="stylesheet">
@@ -495,6 +496,11 @@ work only with <span>Rise</span>.<i class="fa fa-quote-right right fa-2x"></i></
     </section>-->
     <!-- Google Map
 	============================================= -->
+    <form action="javascript:saveStation();">
+        <input class="search-input" type="text" size="20" autocomplete="on" placeholder="Name..." id="name" style="display: block;">
+        <input class="search-input" type="text" size="20" autocomplete="on" placeholder="Search..." id="findbox" style="display: block;">
+        <button class="btn btn-info" type="submit">Kaydet</button>
+    </form>
     <div class="map-container">
         <div class='sidebar'>
           <div class='heading'>
@@ -518,6 +524,11 @@ work only with <span>Rise</span>.<i class="fa fa-quote-right right fa-2x"></i></
             <h6>&copy; 2015 Rise.Development By BootstrapDev</h6>
         </div><link href="{% static '' %}">
     </footer>
+
+    <!-- GOOGLE MAP -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiPwtZ8e2zZomelkewC4SX2rCO0LtPIA4&libraries=places&callback=initMap"
+        async defer></script>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -533,10 +544,6 @@ work only with <span>Rise</span>.<i class="fa fa-quote-right right fa-2x"></i></
     <script src="{% static 'plugins/inview/jquery.inview.min.js' %}"></script>
     <script src="{% static 'plugins/Lightbox/dist/js/lightbox.min.js' %}"></script>
     <script src="{% static 'plugins/WOW/dist/wow.min.js' %}"></script>
-
-
-    <!-- GOOGLE MAP -->
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
 </body>
 
 </html>

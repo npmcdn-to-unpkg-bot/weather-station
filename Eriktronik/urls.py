@@ -21,4 +21,6 @@ from main import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url('^$', views.index, name='main'),
+    url('^add_station$', views.add_station, name='add_station'),
+
 ]

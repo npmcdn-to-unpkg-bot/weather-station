@@ -889,3 +889,6 @@ Media Queries Style
   background-color:#f8f8f8;
 }
 
+#autocomplete {
+  width: 100%;
+}

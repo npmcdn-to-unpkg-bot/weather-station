@@ -85,21 +85,15 @@ $(document).ready(function () {
         }
     });
     /***************** Leaflet Map ******************/
-    var mymap = L.map('mapid').setView([39.925533, 32.866287], 13);
-     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    mymap = L.map('mapid');
+    mymap.setView([38.925533, 34.866287], 6);
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(mymap);
 
 
-    //var markersLayer = new L.LayerGroup();	//layer contain searched elements
-    //map.addLayer(markersLayer);
-    //
-    //map.addControl( new L.Control.Search({
-		//container: 'findbox',
-		//layer: markersLayer,
-		//initial: false,
-		//collapsed: false
-	//}) );
+
+
     /***************** Google Map ******************/
    /* function initialize() {
         var mapCanvas = document.getElementById('map');
@@ -123,7 +117,51 @@ $(document).ready(function () {
     $(window).load(function () {
         preloader.remove();
     });
-
-
-
 })
+
+function initMap() {
+    autocomplete = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */ (
+                document.getElementById('findbox')));
+
+    autocomplete.addListener('place_changed', onPlaceChanged);
+}
+
+function onPlaceChanged()
+{
+    var place = autocomplete.getPlace();
+    if (place.geometry)
+    {
+
+        // TODO: lanet olsun
+        var loc = place.geometry.location.toJSON();
+        mymap.setView([loc['lat'], loc['lng']], 8);
+        mymarker = L.marker([loc['lat'], loc['lng']], {
+            draggable: true
+        }).addTo(mymap);
+    }
+    else
+    {
+        document.getElementById('findbox').placeholder = 'Enter a city';
+    }
+}
+
+function saveStation()
+{
+    var name = document.getElementById('name').value;
+    var myloc = JSON.stringify(mymarker.getLatLng());
+    $.post("add_station", {name: name, loc: myloc}, function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
+    });
+
+
+}
+
+//function searchMap()
+//{
+//    var text = document.getElementById("findbox").value;
+//    $.get( "https://maps.googleapis.com/maps/api/geocode/json?address=" + text +
+//    "&key=AIzaSyCQ1tBlod1TyQojVsixkQTTRjSfgyR_6WU", function( data ) {
+//        alert(JSON.stringify(data['results'][0]['geometry']['location']));
+//    });
+//}

@@ -114,13 +114,13 @@
 	font-weight:bold;
 	border-radius:.25em;
 }
-/*.search-tooltip {*/
-	/*width: 200px;*/
-/*}*/
-/*.leaflet-control-search .search-cancel {*/
-	/*position: static;*/
-	/*float: left;*/
-	/*margin-left: -22px;*/
-/*}*/
+.search-tooltip {
+	width: 200px;
+}
+.leaflet-control-search .search-cancel {
+	position: static;
+	float: left;
+	margin-left: -22px;
+}
 
 
