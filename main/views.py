@@ -1,5 +1,5 @@
 import simplejson as simplejson
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 
 # Create your views here.
@@ -20,8 +20,8 @@ def add_station(request):
         name = request.POST['name']
         address = request.POST['address']
         loc = json.loads(request.POST['loc'])
-        station =  Station.objects.create(name=name, address=address, location_lat=loc['lat'], location_lng=loc['lng'])
-        return JsonResponse({"name":name, "address":address, "lat":loc["lat"], "lng":loc["lng"]})
+        station = Station.objects.create(name=name, address=address, location_lat=loc['lat'], location_lng=loc['lng'])
+        return JsonResponse({"name": name, "address": address, "lat": loc["lat"], "lng": loc["lng"]})
     return render(request, "index.html")
 
 
