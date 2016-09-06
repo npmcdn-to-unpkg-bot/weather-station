@@ -1,4 +1,5 @@
 import simplejson as simplejson
+from django.core import serializers
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 
@@ -28,4 +29,4 @@ def add_station(request):
 def show_station(request):
     if request.method == "GET":
         stations = Station.objects.all()
-        return JsonResponse(serializers.serialize('json', stations))
+        return JsonResponse(serializers.serialize('json', stations), safe=False)

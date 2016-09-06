@@ -91,14 +91,20 @@ $(document).ready(function () {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(mymap);
 
-    // burda çırpındım yanlış biliyom
+    $.get( "show_station").done(function ( data ) {
+        for(i=0; i<data.length; i++){
+            console.log(data[i])
+            //L.marker([data[i].loc['lat'], data[i].loc['lng']], {
+            //}).addTo(mymap);
+        }
+        //alert( "Data Loaded: " + data );
+    });
+
     //var loc_lat=0, loc_lng= 0;
     //$.ajax({url:"show_station", method:"get", data:"station"})
     //$.get("show_station", {location_lat: loc_lat, location_lng: loc_lng}, function(){
     //    alert(loc_lat);
     //});
-    //L.marker([station.loc.lat, loc.lng], {
-    //}).addTo(mymap);
 
 
 

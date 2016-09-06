@@ -511,7 +511,7 @@ work only with <span>Rise</span>.<i class="fa fa-quote-right right fa-2x"></i></
           <div id='listings' class='listings'>
           {% for station in stations %}
             <div class="item">
-                <a href="#" class="title">{{ station.name }}</a>{{ station.address }}
+                <a href="#" data-toggle="modal" data-target="#myModal" class="title">{{ station.name }}</a>{{ station.address }}
             </div>
           {% endfor %}
           </div>
