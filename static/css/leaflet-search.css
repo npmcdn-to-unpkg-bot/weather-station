@@ -40,7 +40,7 @@
 	position:absolute;
 	right:22px;
 	margin:3px 0;
-	background: url('../images/search-icon.png') no-repeat 0 -46px;
+	background: url('../img/search-icon.png') no-repeat 0 -46px;
 	text-decoration:none;
 	filter: alpha(opacity=80);
 	opacity: 0.8;		

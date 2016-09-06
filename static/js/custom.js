@@ -91,6 +91,16 @@ $(document).ready(function () {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(mymap);
 
+    // burda çırpındım yanlış biliyom
+    //var loc_lat=0, loc_lng= 0;
+    //$.ajax({url:"show_station", method:"get", data:"station"})
+    //$.get("show_station", {location_lat: loc_lat, location_lng: loc_lng}, function(){
+    //    alert(loc_lat);
+    //});
+    //L.marker([station.loc.lat, loc.lng], {
+    //}).addTo(mymap);
+
+
 
 
 
@@ -132,8 +142,6 @@ function onPlaceChanged()
     var place = autocomplete.getPlace();
     if (place.geometry)
     {
-
-        // TODO: lanet olsun
         var loc = place.geometry.location.toJSON();
         mymap.setView([loc['lat'], loc['lng']], 8);
         mymarker = L.marker([loc['lat'], loc['lng']], {
@@ -149,8 +157,9 @@ function onPlaceChanged()
 function saveStation()
 {
     var name = document.getElementById('name').value;
-    var myloc = JSON.stringify(mymarker.getLatLng());
-    $.post("add_station", {name: name, loc: myloc}, function(data, status){
+    var address = document.getElementById('findbox').value;
+    myloc = JSON.stringify(mymarker.getLatLng());
+    $.post("add_station", {name: name, address: address, loc: myloc}, function(data, status){
         alert("Data: " + data + "\nStatus: " + status);
     });
 

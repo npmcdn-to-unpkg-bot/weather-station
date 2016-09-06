@@ -22,5 +22,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url('^$', views.index, name='main'),
     url('^add_station$', views.add_station, name='add_station'),
+    url('^show_station$', views.show_station, name='show_station'),
 
 ]

@@ -26,8 +26,9 @@
 
     <!-- Style -->
 {#    <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />#}
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
+{#    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />#}
     <link href="{% static 'plugins/owl-carousel/owl.carousel.css' %}" rel="stylesheet">
+    <link href="{% static 'css/leaflet.css' %}" rel="stylesheet">
     <link href="{% static 'plugins/owl-carousel/owl.theme.css' %}" rel="stylesheet">
     <link href="{% static 'plugins/owl-carousel/owl.transitions.css' %}" rel="stylesheet">
     <link href="{% static 'plugins/Lightbox/dist/css/lightbox.css' %}" rel="stylesheet">
@@ -496,20 +497,28 @@ work only with <span>Rise</span>.<i class="fa fa-quote-right right fa-2x"></i></
     </section>-->
     <!-- Google Map
 	============================================= -->
-    <form action="javascript:saveStation();">
-        <input class="search-input" type="text" size="20" autocomplete="on" placeholder="Name..." id="name" style="display: block;">
-        <input class="search-input" type="text" size="20" autocomplete="on" placeholder="Search..." id="findbox" style="display: block;">
+    <form action="javascript:saveStation();" method="POST">
+        <input class="search-input" name="name" type="text" size="20" autocomplete="off" placeholder="Name..." id="name" style="display: block;">
+        <input class="search-input"  type="text" size="20" autocomplete="on" placeholder="Search..." id="findbox" style="display: block;">
         <button class="btn btn-info" type="submit">Kaydet</button>
     </form>
+
     <div class="map-container">
         <div class='sidebar'>
           <div class='heading'>
             <h2>İstasyonlar</h2>
           </div>
-          <div id='listings' class='listings'></div>
+          <div id='listings' class='listings'>
+          {% for station in stations %}
+            <div class="item">
+                <a href="#" class="title">{{ station.name }}</a>{{ station.address }}
+            </div>
+          {% endfor %}
+          </div>
         </div>
         <div class="mapid" id="mapid"></div>
     </div>
+
     <!--<div id="map"></div>
     <!-- Footer
 	============================================= -->
