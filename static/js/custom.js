@@ -92,9 +92,10 @@ $(document).ready(function () {
     }).addTo(mymap);
 
     $.get( "show_station").done(function ( data ) {
-        for(i=0; i<data.length; i++){
-            console.log(data[i])
-            //L.marker([data[i].loc['lat'], data[i].loc['lng']], {
+        veri = JSON.parse(data);
+        for(i=0; i<veri.length; i++){
+            console.log(veri[i].name)
+            //L.marker([veri[i].name], {
             //}).addTo(mymap);
         }
         //alert( "Data Loaded: " + data );
