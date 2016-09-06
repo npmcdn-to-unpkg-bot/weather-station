@@ -27,8 +27,5 @@ def add_station(request):
 
 def show_station(request):
     if request.method == "GET":
-        station = Station.objects.all()
-        location_lat = Station.objects.get('location_lat')
-        location_lng = Station.objects.get('location_lng')
-        print location_lat, location_lng
-        return HttpResponse(1)
+        stations = Station.objects.all()
+        return JsonResponse(serializers.serialize('json', stations))
