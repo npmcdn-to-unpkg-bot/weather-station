@@ -19,10 +19,9 @@ def add_station(request):
     if request.method == "POST":
         name = request.POST['name']
         address = request.POST['address']
-        print address
         loc = json.loads(request.POST['loc'])
-        Station.objects.create(name=name, address=address, location_lat=loc['lat'], location_lng=loc['lng'])
-        return HttpResponse('Istasyon basariyla kaydedildi.')
+        station =  Station.objects.create(name=name, address=address, location_lat=loc['lat'], location_lng=loc['lng'])
+        return JsonResponse({"name":name, "address":address, "lat":loc["lat"], "lng":loc["lng"]})
     return render(request, "index.html")
 
 
