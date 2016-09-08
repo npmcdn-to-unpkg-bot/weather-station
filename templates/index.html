@@ -99,28 +99,28 @@
                 </div>
             </div>
         </nav>
-        <div id="owl-hero" class="owl-carousel owl-theme">
-            <div class="item" style="background-image: url({% static 'img/sliders/Slide.jpg' %})">
-                <div class="caption">
-                    <h1>We Are <span>Rise</span></h1>
-                    <a class="btn btn-transparent" data-toggle="modal" data-target="#myModal" href="#">İstasyon Ekle</a><a class="btn btn-light" href="#">Buy Now</a>
-                </div>
-            </div>
-            <div class="item" style="background-image: url({% static 'img/sliders/Slide2.jpg' %}) " >
-                <div class="caption">
-                    <h6>Branding / Design / Creativty</h6>
-                    <h1>Creative <span>Design</span></h1>
-                    <a class="btn btn-transparent" data-toggle="modal" data-target="#myModal" href="#">İstasyon Ekle</a><a class="btn btn-light" href="#">Buy Now</a>
-                </div>
-            </div>
-            <div class="item" style="background-image: url({% static 'img/sliders/Slide3.jpg' %})">
-                <div class="caption">
-                    <h6>Branding / Design / Creativty</h6>
-                    <h1>Clean <span>Code</span></h1>
-                    <a class="btn btn-transparent" data-toggle="modal" data-target="#myModal" href="#">İstasyon Ekle</a><a class="btn btn-light" href="#">Buy Now</a>
-                </div>
-            </div>
-        </div>
+{#        <div id="owl-hero" class="owl-carousel owl-theme">#}
+{#            <div class="item" style="background-image: url({% static 'img/sliders/Slide.jpg' %})">#}
+{#                <div class="caption">#}
+{#                    <h1>We Are <span>Rise</span></h1>#}
+{#                    <a class="btn btn-transparent" data-toggle="modal" data-target="#myModal" href="#">İstasyon Ekle</a><a class="btn btn-light" href="#">Buy Now</a>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="item" style="background-image: url({% static 'img/sliders/Slide2.jpg' %}) " >#}
+{#                <div class="caption">#}
+{#                    <h6>Branding / Design / Creativty</h6>#}
+{#                    <h1>Creative <span>Design</span></h1>#}
+{#                    <a class="btn btn-transparent" data-toggle="modal" data-target="#myModal" href="#">İstasyon Ekle</a><a class="btn btn-light" href="#">Buy Now</a>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="item" style="background-image: url({% static 'img/sliders/Slide3.jpg' %})">#}
+{#                <div class="caption">#}
+{#                    <h6>Branding / Design / Creativty</h6>#}
+{#                    <h1>Clean <span>Code</span></h1>#}
+{#                    <a class="btn btn-transparent" data-toggle="modal" data-target="#myModal" href="#">İstasyon Ekle</a><a class="btn btn-light" href="#">Buy Now</a>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
     </section>
 
     <!-- Welcome
@@ -128,7 +128,7 @@
     <section id="welcome">
         <div class="container">
             <h2>Welcome To <span>Rise</span></h2>
-            <hr class="sep">
+            <hr class="sep"><section id="container">
             <p>Make Yourself At Home Don't Be Shy</p>
             <img class="img-responsive center-block wow fadeInUp" data-wow-delay=".3s" src="{% static 'img/welcome/logo.png' %}" alt="logo">
         </div>
@@ -140,6 +140,7 @@
   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
 
   <!-- Modal -->
+<form action="javascript:saveStation();" method="POST">
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
 
@@ -150,19 +151,55 @@
           <h4 class="modal-title">Yeni İstasyon</h4>
         </div>
         <div class="modal-body" >
-            <input type="text" class="form-control" >
+            <div class="form-group">
+                <input class="form-control" name="name" type="text"  autocomplete="off" placeholder="Name..." id="name" style="display: block;">
+            </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
-          <button type="button" class="btn btn-info" >Kaydet</button>
+          <button type="submit" class="btn btn-info" >Kaydet</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Vazgeç</button>
         </div>
       </div>
 
     </div>
   </div>
+</form>
 
+<!-- Detail Modal -->
+  <div class="modal" id="chartContainer" style="height: 300px; width: 100%;" >
+    <div class="modal-dialog">
 
-<!-- Popup -->
+      <!-- Modal content-->
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          	<script type="text/javascript">
+                window.onload = function () {
+			    var chart = new CanvasJS.Chart("chartContainer", {
+				    title: {
+					    text: "Basic Spline Chart"
+				    },
+				    data: [{
+					    type: "spline",
+					    dataPoints: [
+					    { x: 10, y: 230 },
+					    { x: 20, y: 710 },
+					    { x: 30, y: 380 },
+					    { x: 40, y: 567 },
+					    { x: 50, y: 280 },
+					    { x: 60, y: 507 },
+					    { x: 70, y: 680 },
+					    { x: 80, y: 287 },
+					    { x: 90, y: 460 },
+					    { x: 100, y: 509 }
+					    ]
+				    }]
+			    });
+			    chart.render();
+		}
+	</script>
+	<script src="{% static 'js/jquery.canvasjs.min.js' %}"></script>
+
+    </div>
+  </div>
 
     <!-- Services
 	=============================================
@@ -419,7 +456,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4"><section id="container">
                     <div class="team">
                         <img class="img-responsive center-block" src="{% static 'img/team/MikeDoe.jpg' %}" alt="3">
                         <h4>Mike Doe</h4>
@@ -497,28 +534,43 @@ work only with <span>Rise</span>.<i class="fa fa-quote-right right fa-2x"></i></
     </section>-->
     <!-- Google Map
 	============================================= -->
-    <form action="javascript:saveStation();" method="POST">
-        <input class="search-input" name="name" type="text" size="20" autocomplete="off" placeholder="Name..." id="name" style="display: block;">
-        <input class="search-input"  type="text" size="20" autocomplete="on" placeholder="Search..." id="findbox" style="display: block;">
-        <button class="btn btn-info" type="submit">Kaydet</button>
-    </form>
-
-    <div class="map-container">
-        <div class='sidebar'>
-          <div class='heading'>
-            <h2>İstasyonlar</h2>
-          </div>
-          <div id='listings' class='listings'>
-          {% for station in stations %}
-            <div class="item">
-                <a href="#" data-toggle="modal" data-target="#myModal" class="title">{{ station.name }}</a>{{ station.address }}
+<section id="contact">
+    <div class="container" >
+        <hr class="sep">
+        <div class="col-md-6 col-md-offset-3 wow fadeInUp">
+            <div class="form-group">
+                <input class="form-control"  type="text" autocomplete="on" placeholder="Search..." id="findbox" style="display: block;">
             </div>
-          {% endfor %}
-          </div>
+            <button class="btn-block" data-toggle="modal" data-target="#myModal">İstasyon Ekle</button>
         </div>
-        <div class="mapid" id="mapid"></div>
     </div>
+</section>
+        <div class="map-container">
+            <div class='sidebar'>
+              <div class='heading'>
+                <h3>İstasyon Listesi</h3>
+              </div>
+              <div id='listings' class='listings'>
+              {% for station in stations %}
+               <div class="box">
+{#                <div id="station" class="item">#}
+                  <div class="text">{{ station.name }}</div>
+                    <span class="edit">edit</span>
+                    <span class="save">save</span>
+                    <span class="del">delete</span>
+                    <span class="detail" data-toggle="modal" data-target="#chartContainer" onclick="javascript:onMapClick('{{ station }}');">detail</span>
+{#                    <input type="text" class="edit" style="display:none"/>#}
+{#                    <a href="#" data-toggle="modal" data-target="#myModal" id="title" class="title">{{ station.name }}</a>{{ station.address }}#}
+{#                    <input type="button" class="display" value="Düzenle" style="float: right;">#}
+{#                    <input type="button" class="del" id="del" value="Sil" style="float: right;">#}
+{#                </div>#}
+               </div>
+              {% endfor %}
 
+              </div>
+            </div>
+            <div class="mapid" id="mapid"></div>
+        </div>
     <!--<div id="map"></div>
     <!-- Footer
 	============================================= -->

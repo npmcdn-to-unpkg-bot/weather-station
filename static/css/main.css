@@ -852,7 +852,7 @@ Media Queries Style
   width:33.3333%;
   height:100%;
   top:0;left:0;
-  overflow:hidden;
+  overflow:auto;
   border-right:1px solid rgba(0,0,0,0.25);
 }
 
@@ -864,10 +864,9 @@ Media Queries Style
   top:0;
   bottom:0;
 }
-
 .listings {
   height:100%;
-  overflow:auto;
+  overflow:hidden;
   padding-bottom:60px;
 }
 .listings .item {
@@ -891,4 +890,102 @@ Media Queries Style
 
 #autocomplete {
   width: 100%;
+}
+
+.editable {
+  border-color: #bd0f18;
+  box-shadow: inset 0 0 10px #555;
+  background: #f2f2f2;
+}
+
+.text {
+  outline: none;
+}
+
+.edit, .save {
+  width: 50px;
+  display: block;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 4px 10px;
+  border-top-right-radius: 2px;
+  border-bottom-left-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: -1px 1px 4px rgba(0,0,0,0.5);
+}
+
+.del {
+  width: 60px;
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 4px 10px;
+  border-top-left-radius: 2px;
+  border-bottom-right-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: -1px 1px 4px rgba(0,0,0,0.5);
+}
+
+.detail {
+  width: 60px;
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 170px;
+  padding: 4px 10px;
+  border-top-left-radius: 2px;
+  border-bottom-right-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: -1px 1px 4px rgba(0,0,0,0.5);
+}
+
+
+.del {
+  background: #e9cd71;
+  color: #f0f0f0;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+}
+
+.edit {
+  background: #c94a13;
+  color: #f0f0f0;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+}
+
+.save {
+  display: none;
+  background: #17a847;
+  color: #f0f0f0;
+}
+
+.detail {
+  background: #c94a13;
+  color: #f0f0f0;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+}
+
+.box {
+  position: relative;
+  margin: 10px;
+  padding: 30px 10px 5px;
+  width: 400px;
+  min-height: 5px;
+  border: 1px solid grey;
+  border-radius: 3px;
+  background: #fff;
+}
+
+.box:hover .edit, .box:hover .del, .box:hover .detail {
+  opacity: 1;
+}
+.text {
+  outline: none;
 }

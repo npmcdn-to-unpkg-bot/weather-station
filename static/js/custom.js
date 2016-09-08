@@ -91,25 +91,14 @@ $(document).ready(function () {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(mymap);
 
-    $.get( "show_station").done(function ( data ) {
-        veri = JSON.parse(data);
-        for(i=0; i<veri.length; i++){
-            console.log(veri[i].name)
-            //L.marker([veri[i].name], {
-            //}).addTo(mymap);
-        }
-        //alert( "Data Loaded: " + data );
+$.get( "show_station").done(function (response) {
+        var data = JSON.parse(response);
+        console.log(data);
+        data.forEach(function (location) {
+           mymarker = L.marker([location.fields.location_lat, location.fields.location_lng], {
+            }).addTo(mymap).on('click', onMapClick);
+        });
     });
-
-    //var loc_lat=0, loc_lng= 0;
-    //$.ajax({url:"show_station", method:"get", data:"station"})
-    //$.get("show_station", {location_lat: loc_lat, location_lng: loc_lng}, function(){
-    //    alert(loc_lat);
-    //});
-
-
-
-
 
     /***************** Google Map ******************/
    /* function initialize() {
@@ -161,6 +150,11 @@ function onPlaceChanged()
     }
 }
 
+
+function onMapClick(e) {
+    alert("You clicked the map at " + e.latlng);
+}
+
 function saveStation()
 {
     var name = document.getElementById('name').value;
@@ -170,14 +164,35 @@ function saveStation()
         alert("Data: " + data + "\nStatus: " + status);
     });
 
-
 }
 
-//function searchMap()
-//{
-//    var text = document.getElementById("findbox").value;
-//    $.get( "https://maps.googleapis.com/maps/api/geocode/json?address=" + text +
-//    "&key=AIzaSyCQ1tBlod1TyQojVsixkQTTRjSfgyR_6WU", function( data ) {
-//        alert(JSON.stringify(data['results'][0]['geometry']['location']));
-//    });
-//}
+$( ".del" ).click(function() {
+    alert("geldi");
+    var x = $(this).parent('div.box');
+    alert($(this));
+    x.remove();
+});
+
+//$( ".display" ).click(function() {
+//    alert("edit");
+//    $(this).hide().siblings(".edit").show().val($(this).text()).focus();
+//});
+$('.edit').click(function(){
+  $(this).hide();
+  $(this).parent('div.box').addClass('editable');
+  $(this).siblings('div.text').attr('contenteditable', true);
+  $(this).siblings('span.save').show();
+  //$('.box').addClass('editable');
+  //$('.text').attr('contenteditable', 'true');
+  //$('.save').show();
+});
+
+$('.save').click(function(){
+  $(this).hide();
+  $('.box').removeClass('editable');
+  $('.text').removeAttr('contenteditable');
+  $('.edit').show();
+});
+
+
+
