@@ -166,41 +166,25 @@
 </form>
 
 <!-- Detail Modal -->
-  <div class="modal" id="chartContainer" style="height: 300px; width: 100%;" >
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          	<script type="text/javascript">
-                window.onload = function () {
-			    var chart = new CanvasJS.Chart("chartContainer", {
-				    title: {
-					    text: "Basic Spline Chart"
-				    },
-				    data: [{
-					    type: "spline",
-					    dataPoints: [
-					    { x: 10, y: 230 },
-					    { x: 20, y: 710 },
-					    { x: 30, y: 380 },
-					    { x: 40, y: 567 },
-					    { x: 50, y: 280 },
-					    { x: 60, y: 507 },
-					    { x: 70, y: 680 },
-					    { x: 80, y: 287 },
-					    { x: 90, y: 460 },
-					    { x: 100, y: 509 }
-					    ]
-				    }]
-			    });
-			    chart.render();
-		}
-	</script>
-	<script src="{% static 'js/jquery.canvasjs.min.js' %}"></script>
-
-    </div>
-  </div>
-
+<div class="modal fade" id="detailModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <div id="chartContainer" style="height: 400px; width: 100%;"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
     <!-- Services
 	=============================================
     <section id="services">
@@ -558,7 +542,7 @@ work only with <span>Rise</span>.<i class="fa fa-quote-right right fa-2x"></i></
                     <span class="edit">edit</span>
                     <span class="save">save</span>
                     <span class="del">delete</span>
-                    <span class="detail" data-toggle="modal" data-target="#chartContainer" onclick="javascript:onMapClick('{{ station }}');">detail</span>
+                    <span class="detail" data-toggle="modal" data-target="#detailModal" onclick="javascript:onMapClick('{{ station }}');">detail</span>
 {#                    <input type="text" class="edit" style="display:none"/>#}
 {#                    <a href="#" data-toggle="modal" data-target="#myModal" id="title" class="title">{{ station.name }}</a>{{ station.address }}#}
 {#                    <input type="button" class="display" value="Düzenle" style="float: right;">#}

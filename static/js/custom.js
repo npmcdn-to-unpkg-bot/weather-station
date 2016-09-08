@@ -194,5 +194,30 @@ $('.save').click(function(){
   $('.edit').show();
 });
 
+                window.onload = function () {
+			    var chart = new CanvasJS.Chart("chartContainer", {
+				    title: {
+					    text: "Basic Spline Chart"
+				    },
+				    data: [{
+					    type: "spline",
+					    dataPoints: [
+					    { x: 10, y: 230 },
+					    { x: 20, y: 710 },
+					    { x: 30, y: 380 },
+					    { x: 40, y: 567 },
+					    { x: 50, y: 280 },
+					    { x: 60, y: 507 },
+					    { x: 70, y: 680 },
+					    { x: 80, y: 287 },
+					    { x: 90, y: 460 },
+					    { x: 100, y: 509 }
+					    ]
+				    }]
+			    });
+			    chart.render();
+		}
+
+
 
 
